@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Axelmart</title>
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link  src="{{ asset('js/header.js') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
@@ -19,29 +20,30 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body style="padding: 0">
 
 
-    <div class="super_container">
+@include('users.hometopbar')
 
         <!-- Header -->
 
-@include('users.header');
+     @include('users.header')
+
+
+<div style="width: 100% ; height: 300px; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfHNsUWwIv6LYyWJvG-CkF75kDwohVKNEHfg&usqp=CAU'); background-size: cover;"></div>
+        <!-- featured product -->
+
+     @include('users.products')
 
 
         <!-- featured product -->
 
-@include('users.products');
-
-
-        <!-- featured product -->
-
-        @include('users.products');
+     @include('users.products')
 
 
         <!-- footer -->
 
-@include('users.footer');
+     @include('users.footer')
 
 
 

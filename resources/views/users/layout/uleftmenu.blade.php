@@ -3,22 +3,30 @@
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
 
+      <li class="nav-item">
+        <a href="{{route('use_home.personalinfo')}}" class="nav-link">
+          <i class="nav-icon fas fa-user" ></i>
+          <p>
+            personal info
+          </p>
+        </a>
+      </li>
 
 
 
 
       <li class="nav-item">
-        <a href="{{route('admin.products.list')}}" class="nav-link">
-          <i class="nav-icon fas fa-list"></i>
+        <a href="{{route('use_home.cart')}}" class="nav-link">
+          <i class="nav-icon fas fa-shopping-cart"></i>
           <p>
-            Products
+            cart
 
           </p>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="{{route('admin.logout')}}" class="nav-link">
+        <a href="#" class="nav-link">
           <i class="nav-icon fas fa-sign-out-alt"></i>
           <p>
             Logout
@@ -29,3 +37,4 @@
 
     </ul>
   </nav>
+

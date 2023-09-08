@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controller\User\HomepageController;
+use App\Http\Controllers\authmanager;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/signin', 'App\Http\Controllers\authmanager@signIn')->name('users.signin');
 
+});
+// Uncomment this line if you want to use the controller method
+// Route::get('/signin', 'App\Http\Controllers\AuthManager@signIn')->name('users.signin');
+
+// OR use this line if you want to use the controller method with the correct class name
+Route::get('/signin', [authmanager::class, 'signin'])->name('signin');
+Route::post('/signin', [authmanager::class, 'signinPost'])->name('signin.Post');
+Route::get('/signup', [authmanager::class, 'signup'])->name('signup');
+Route::post('/signup', [authmanager::class, 'signupPost'])->name('signup.Post');
+Route::get('/user_home', [authmanager::class, 'user_home'])->name('user_home');
+Route::post('/profile', [authmanager::class, 'profile'])->name('signup.Post');
+Route::get('user_home/cart', [authmanager::class, 'cart'])->name('use_home.cart');
+Route::get('user_home/personalinfo', [authmanager::class, 'personalinfo'])->name('use_home.personalinfo');

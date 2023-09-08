@@ -1262,11 +1262,13 @@ select option
 	}
 
 }
-
-@media only screen and (max-width: 575px)
-{
-	h2{font-size: 24px;}
-	p{font-size: 13px;}
+@media only screen and (max-width: 575px) {
+    h2 {
+        font-size: 24px;
+    }
+}
+	p{
+        font-size: 13px;}
 	.top_bar
 	{
 		display: none;
@@ -1496,19 +1498,19 @@ h2::after {
 .carousel-control-prev, .carousel-control-next {
 	height: 44px;
 	width: 40px;
-	background: #7ac400;
+
 	margin: auto 0;
 	border-radius: 4px;
 	opacity: 0.8;
 }
 .carousel-control-prev:hover, .carousel-control-next:hover {
-	background: #78bf00;
+
 	opacity: 1;
 }
 .carousel-control-prev i, .carousel-control-next i {
 	font-size: 36px;
 	position: absolute;
-	top: 50%;
+	top: 0%;
 	display: inline-block;
 	margin: -19px 0 0 0;
 	z-index: 5;
@@ -1565,7 +1567,7 @@ top: 50%;
 display: inline-block;
 margin: -19px 0 0 0;
 z-index: 5;
-left: 0;
+left:0;
 right: 0;
 color: #fff;
 text-shadow: none;
@@ -1656,3 +1658,22 @@ body{
     border-radius: 0px;
     background-color: rgba(63, 78, 191, 1);
   }
+.flashMessage{
+    margin-top: 10px;
+    border: 2px solid ;
+    background-color: #7b00ff;
+
+}
+.flashMessage{
+    margin-top: 10px;
+    font-size:25px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+
+
+
+}
+.flashMessage.hidden {
+    opacity: 0; /* Set opacity to 0 to hide the message */
+}

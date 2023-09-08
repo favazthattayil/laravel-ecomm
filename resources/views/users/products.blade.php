@@ -19,7 +19,7 @@
 
 
 
-
+<div>
 
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -290,7 +290,7 @@
 								</div>
 								<div class="thumb-content">
 									<h4>Google Pixel</h4>
-									<p class="item-price"><strike>$450.00</strike> <span>$418.00</span></p>
+									<p class="item-price"><s>$450.00</s> <span>$418.00</span></p>
 									<div class="star-rating">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -331,7 +331,7 @@
 			</div>
 <!-- remove end -->
 
-
+</div>
 
 
 		</div>
@@ -342,10 +342,10 @@
 	</div>
 <!-- Carousel controls -->
 			<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-				<i class="fa fa-angle-left" style="font-size:80px;color:black ;"></i>
+				<i class="fa fa-angle-left" style="font-size:80px;color:rgb(255, 255, 255) ;"></i>
 			</a>
 			<a class="carousel-control-next" href="#myCarousel" data-slide="next">
-				<i class="fa fa-angle-right " style="font-size:80px;color:black ;"></i>
+				<i class="fa fa-angle-right " style="font-size:80px;color:rgb(255, 255, 255) ;"></i>
 			</a>
 </div>
         </div>

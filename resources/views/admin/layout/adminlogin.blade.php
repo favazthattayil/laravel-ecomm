@@ -3,6 +3,8 @@
 <head>
   <!-- Include Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <style>
     body {
       padding: 50px;
@@ -107,8 +109,17 @@
       <div class="layer"></div>
 
     </div>
+
+
     <div class="form-section">
+        @if(session('message'))
+        <div class="alert alert-danger" id="sessionMessage">
+            {{ session('message') }}
+        </div>
+
+    @endif
       <form action={{route('admin.do.login')}} method="POST">
+
         @csrf
 
         <div class="form-group">
@@ -119,13 +130,20 @@
           <input pattern=".{8,}" class="form-control" type="password" name="password" id="sample3" placeholder="Password">
         </div>
 
-        <p class="forgot-text">Forgot Password ?</p>
+
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="checkbox-1" checked>
+          <input type="checkbox" class="form-check-input" value="1" id="checkbox-1" name="remember_me">
           <label class="form-check-label keep-text" for="checkbox-1">Keep me Signed In</label>
         </div>
         <button type="submit" class="btn btn-primary sign-in-btn">Sign In</button>
       </form>
+
+
+</div>
+
+
+
+
     </div>
   </div>
 </body>
