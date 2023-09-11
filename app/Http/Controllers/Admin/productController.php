@@ -97,7 +97,7 @@ class productController
 
     // Flash a success message with a 5-second duration
     return redirect()->route('admin.products.list')
-        ->with('message', 'Product Updated Successfully')
+        ->with('message', 'Product Updated Successfully ...')
         ->with('message_duration', 2); // Set a custom message duration in seconds
 }
 

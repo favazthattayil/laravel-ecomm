@@ -7,7 +7,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
 
-                <h1>Products ({{$products->total()}})</h1>
+                <h1>Products </h1>
 
             </div>
           {{-- <div class="col-sm-6">
@@ -32,7 +32,7 @@
                 <div class="card-header">
                     <a href="{{ route('admin.products.create')}}" class="btn btn-primary">Add Product</a>
 
-                    @if(session()->has('message'))<p class="flashMessage float-right">{{session()->get('message')}}</p>@endif
+                    @if(session()->has('message'))<p class="flashMessage float-right" style="color: #e41818">{{session()->get('message')}}</p>@endif
 
                 </div>
 
@@ -85,20 +85,17 @@
                             <i class="fas fa-trash fa-animate-shake" style="color: white; padding-right: 8px;"></i>Delete
                         </a>
                       </td>
+
                     </tr>
 
                       @endforeach
 
 
-
-
-
-
-
                   </tbody>
                 </table>
- @endif
+              @endif
               </div>
+               <h4 style="margin-left: 15px">Total products ({{$products->total()}})</h4>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                   {{$products->links()}}
@@ -115,6 +112,7 @@
           <!-- /.col -->
         </div>
       </div>
+
     </section>
     <!-- /.content -->
 <!-- ./wrapper -->

@@ -104,7 +104,7 @@
     <div class="back-img">
       <div class="sign-in-text">
         <h2 class="active">Sign In</h2>
-        <h2 class="nonactive">Sign Up</h2>
+        
       </div>
       <div class="layer"></div>
 

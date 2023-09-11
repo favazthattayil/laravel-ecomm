@@ -9,12 +9,12 @@
           <div class="col-sm-6">
 
           </div>
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">General Form</li>
             </ol>
-          </div>
+          </div> --}}
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -70,7 +70,8 @@
                         <span class="input-group-text">Upload</span>
                       </div> --}}
                     </div>
-                    <img src="{{ asset('storage/images/'.$product->image)}}" width="100" alt="">
+                    <img style="margin-top: 10px;" src="{{ asset('storage/images/'.$product->image)}}" width="100" alt="">
+
                   </div>
                   <div class="form-group">
                     <label >Available</label>

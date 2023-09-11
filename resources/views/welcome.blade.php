@@ -13,6 +13,8 @@
 
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0-beta3/css/all.min.css">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -23,11 +25,12 @@
 <body style="padding: 0">
 
 
-@include('users.hometopbar')
 
-        <!-- Header -->
+@include('users.homepage')
+{{--        <!-- Header -->
 
      @include('users.header')
+
 
 
 <div style="width: 100% ; height: 300px; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfHNsUWwIv6LYyWJvG-CkF75kDwohVKNEHfg&usqp=CAU'); background-size: cover;"></div>
@@ -38,12 +41,12 @@
 
         <!-- featured product -->
 
-     @include('users.products')
+     {{-- @include('users.products') --}}
 
 
         <!-- footer -->
-
-     @include('users.footer')
+{{--
+     @include('users.footer') --}}
 
 
 

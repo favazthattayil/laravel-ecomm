@@ -43,19 +43,18 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">Category</label>
                     <select name="category_id" class="form-control">
-                        <option value="">Select a Option</option>
+                        <option value="">Select a Category</option>
                         @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-
+                        <option value="{{$category->id}}" style="color: black;">{{$category->name}}</option>
                         @endforeach
-
                     </select>
+
                   </div>
 
 
                   <div class="form-group">
 
-                                <label for="image">Image <span class="required">*</span></label>
+                                <label for="image">Image </label>
 
                                 <div class="input-group">
 

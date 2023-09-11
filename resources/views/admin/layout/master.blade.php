@@ -52,13 +52,13 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbC0X_8ZXQGvti8IXn2e5aPXxtcQK0jmnhy_00xe5&s" class="img-circle elevation-2" style="background-size: contain" alt="User Image">
+    <div class="image">
+        {{--        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbC0X_8ZXQGvti8IXn2e5aPXxtcQK0jmnhy_00xe5&s" class="img-circle elevation-2" style="background-size: contain" alt="User Image">
         </div>
         <div class="info">
-            {{--  @foreach ($admins as $admin)
+            @foreach ($admins as $admin)
            <option value="{{$category->id}}">{{$category->name}}</option> --}}
-            <a href="#" class="d-block">jacob</a
+            {{-- <a href="#" class="d-block">jacob</a --}}
 
             {{-- @endforeach --}}
 
