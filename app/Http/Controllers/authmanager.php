@@ -51,12 +51,30 @@ class authmanager extends Controller
     }
 
 
+    public function address()
+
+    {
+
+        return view('users.profile.address');
+
+    }
+
+
 
     public function personalinfo()
 
     {
 
         return view('users.profile.personalinfo');
+
+    }
+
+
+    public function orders()
+
+    {
+
+        return view('users.profile.orders');
 
     }
 
@@ -82,7 +100,7 @@ class authmanager extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            return redirect()->intended('dash');
+            return redirect(route('welcome'));
 
         }
 
@@ -128,7 +146,7 @@ class authmanager extends Controller
 
         ];
 
-        //  return $data;
+         //return $data;
 
         $user = DB::table('users')->insert($data);
 
@@ -165,6 +183,14 @@ class authmanager extends Controller
         return view('userdash');
 
     }
+
+
+  
+
+
+
+
+
 
 }
 

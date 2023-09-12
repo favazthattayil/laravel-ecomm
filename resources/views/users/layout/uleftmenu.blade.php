@@ -1,4 +1,4 @@
-<nav class="mt-2">
+<nav class="mt-2" style="background-color: #2b2a29;">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
@@ -20,6 +20,17 @@
           <i class="nav-icon fas fa-shopping-cart"></i>
           <p>
             cart
+
+          </p>
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+        <a href="{{route('address')}}" class="nav-link">
+          <i class="nav-icon fas fa-shopping-cart"></i>
+          <p>
+            address
 
           </p>
         </a>
