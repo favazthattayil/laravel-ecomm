@@ -29,7 +29,7 @@ class productController
 
 
     public function admin(){
-        $admins = Admin::all() ; //select*from categories
+        $admins = Admin::all() ; //select*from admins
         return view('admin.layout.master',compact('admins'));
     }
 

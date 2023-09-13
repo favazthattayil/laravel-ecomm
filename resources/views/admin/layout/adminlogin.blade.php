@@ -104,7 +104,7 @@
     <div class="back-img">
       <div class="sign-in-text">
         <h2 class="active">Sign In</h2>
-        
+
       </div>
       <div class="layer"></div>
 
@@ -112,12 +112,13 @@
 
 
     <div class="form-section">
+        
         @if(session('message'))
         <div class="alert alert-danger" id="sessionMessage">
             {{ session('message') }}
         </div>
+        @endif
 
-    @endif
       <form action={{route('admin.do.login')}} method="POST">
 
         @csrf

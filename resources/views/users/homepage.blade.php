@@ -15,11 +15,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="css/css/style.css">
     <!-- Responsive-->
-    <link rel="stylesheet" href="{{asset('css/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/css/responsive.css') }}">
     <!-- fevicon -->
     <link rel="icon" href="img/images/fevicon.png" type="image/gif" />
 
@@ -38,15 +39,16 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/css/owl.carousel.min.css">
     <link rel="stylesoeet" href="css/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
 
     <!-- Include Bootstrap CSS (you should include this too if you haven't already) -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- Include Bootstrap JavaScript (requires jQuery and Popper.js) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JavaScript (requires jQuery and Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
         /* Style for the dropdown button */
@@ -64,6 +66,13 @@
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
+
+        /* Custom width for the dropdown menu */
+        .custom-dropdown-menu {
+            width: 100px;
+            /* Adjust the width as needed */
+        }
+
 
         /* Style for dropdown items */
         .dropdown-content ul {
@@ -99,9 +108,9 @@
 
                             <ul
                                 style="display: flex; justify-content: flex-end; align-items: flex-end; margin-right:50px;">
-                                <li><a href="{{ route('signup') }}">
-
-                                        <span class="padding_10">User</span></a>
+                                <li>
+                                    {{-- <a href="{{ route('signup') }}">
+                                    <span class="padding_10">User</span></a> --}}
                                 </li>
 
                                 <li><a href="{{ route('signin') }}">
@@ -144,11 +153,13 @@
             </div>
         </div>
         <div class="dropdown" style="margin: 10px;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #2b2a29;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #2b2a29;">
                 <i class="fas fa-user-circle"></i> User
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 20px;"> <!-- Adjust the width as needed -->
-                <a class="dropdown-item" href="{{ route('use_home.personalinfo')}}">Profile</a>
+            <div class="custom-dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="width: 20px;">
+                <!-- Adjust the width as needed -->
+                <a class="dropdown-item" href="{{ route('use_home.personalinfo') }}">Profile</a>
                 <a class="dropdown-item" href="{{ route('use_home.cart') }}">Cart</a>
                 <a class="dropdown-item" href="{{ route('orders') }}">Orders</a>
                 <a class="dropdown-item" href="#">Logout</a>
@@ -205,10 +216,10 @@
         <!-- banner section start -->
         <div class="banner_section layout_padding">
             <div class="container">
-                <div id="my_slider"  class="carousel slide" data-ride="carousel">
+                <div id="my_slider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div  class="row">
+                            <div class="row">
 
                                 <div class="col-sm-12">
                                     <h1 class="banner_taital">Smart Shopping <br>Starts Here</h1>
@@ -767,7 +778,9 @@
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

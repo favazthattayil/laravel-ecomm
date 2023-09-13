@@ -8,7 +8,8 @@
                 Add New Address
             </button>
 
-            <form action="" method="POST">
+            <form action="{{ route('address.store') }}" method="POST">
+
                 @csrf
 
                 <div class="dropdown-menu">
@@ -22,20 +23,20 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Full Name</label>
-                                    <input type="text" class="form-control" name="fullname" id="fullName" placeholder="Enter full name">
+                                    <input type="text" class="form-control" name="fullname" id="fullName" placeholder="Enter full name" value="{{ Auth::user()->fname . ' ' . Auth::user()->lname }}">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="eMail">Email</label>
-                                    <input type="email" class="form-control" name="email" id="eMail" placeholder="Enter email ID">
+                                    <input type="email" class="form-control" name="email" id="eMail" placeholder="Enter email ID" value="{{Auth::user()->email}}">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" name="phone" id="phone"
-                                        placeholder="Enter phone number">
+                                    <input type="number" class="form-control" name="phone" id="phone"
+                                        placeholder="Enter phone number" value="{{Auth::user()->phone}}">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -52,7 +53,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="Street">Street</label>
-                                    <input type="name" class="form-control" id="Street" name="street" placeholder="Enter Street">
+                                    <input type="name" class="form-control" id="Street" name="street" placeholder="Enter Street" >
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -70,17 +71,17 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="pin">pin code</label>
-                                    <input type="text" class="form-control" name="pincode" id="pin" placeholder="pin code">
+                                    <input type="number" class="form-control" name="pincode" id="pin" placeholder="pin code">
                                 </div>
                             </div>
                         </div>
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
-                                    <button type="button" id="submit" name="submit"
-                                        class="btn btn-secondary">Cancel</button>
-                                    <button type="button" id="submit" name="submit"
-                                        class="btn btn-primary">Update</button>
+                                    {{-- <button type="button" id="submit" name="submit"
+                                        class="btn btn-secondary">Cancel</button> --}}
+                                    <button class="btn btn-primary" type="submit">save</button>
+
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
+
 use DB;
 
 class authmanager extends Controller
@@ -18,6 +20,19 @@ class authmanager extends Controller
     {
 
         return view('users.signin');
+
+    }
+
+
+    public function signout()
+
+    {
+
+        Session::flush();
+
+        Auth::logout();
+
+        return redirect(route('signin'));
 
     }
 
@@ -51,6 +66,16 @@ class authmanager extends Controller
     }
 
 
+
+    public function welcome()
+
+    {
+
+        return view('welcome');
+
+    }
+
+
     public function address()
 
     {
@@ -78,37 +103,64 @@ class authmanager extends Controller
 
     }
 
+    // app/Http/Controllers/UserController.php
+
+
+
+
+    public function update(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'fname' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+        ]);
+
+        // Get the authenticated user
+        $user = Auth::user();
+        $user=User::findOrFail(Auth::user()->id);
+
+        // Update the user's information
+        $user->update([
+            'fname' => $request->input('fname'),
+            'lname' => $request->input('lname'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+        ]);
+
+        // Redirect back with a success message
+        return redirect(route('use_home.personalinfo'))->with('success', 'Profile updated successfully');
+
+    }
+
+
+
+
 
 
 
 
     public function signinPost(Request $request)
-
     {
+    // Validate the incoming data (email and password)
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-        $request->validate([
-
-            'email' => 'required',
-
-            'password' => 'required'
-
-        ]);
-
-
-
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-
-            return redirect(route('welcome'));
-
-        }
-
-
-
-        return redirect(route('signin'))->with("error", "Sign-in details are not valid");
-
+    // Attempt to authenticate the user using the provided credentials
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        // Authentication succeeded, redirect to the 'welcome' route
+        return redirect(route('welcome'));
     }
+
+    // If authentication fails, redirect back to the 'signin' route with an error message
+    return redirect(route('signin'))->with("error", "Invalid email or password");
+
+   }
+
 
 
 
@@ -156,36 +208,24 @@ class authmanager extends Controller
 
         }
 
-
-
         return redirect(route('signin'))->with("success", "Sign up successful, please sign in.");
 
     }
 
 
 
-    public function signout()
-
-    {
-
-        Session::flush();
-
-        Auth::logout();
-
-        return redirect(route('signin'));
-
-    }
-
-    public function userdash()
-
-    {
-
-        return view('userdash');
-
-    }
 
 
-  
+    // public function userdash()
+
+    // {
+
+    //     return view('userdash');
+
+    // }
+
+
+
 
 
 
