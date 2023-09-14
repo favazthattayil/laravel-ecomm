@@ -74,8 +74,12 @@
                     <div class="user-avatar">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
                     </div>
-                    <h5 class="user-name">{{Auth::user()->fname}}</h5>
-                    <h6 class="user-email">{{Auth::user()->email}}</h6>
+                    <h5 class="user-name">@if(Auth::check())
+                        {{ Auth::user()->fname.' '.Auth::user()->lname }}
+                    @endif</h5>
+                    <h6 class="user-email">@if(Auth::check())
+                        {{ Auth::user()->email }}
+                    @endif</h6>
                 </div>
                 <div class="about">
                     {{-- <h5>About</h5>
@@ -99,15 +103,19 @@
                       <form action="{{route ('update')}}" method="POST">
                         @csrf
                     <div class="form-group">
-                        <label for="fullName">Fname</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name" name="fname" value="{{ Auth::user()->fname }}">
+                        <label for="fname">Fname</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name" name="fname" value="{{ Auth::check() ? Auth::user()->fname : '' }}">
+
+
 
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
-                        <label for="fullName">Lname</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name" name="lname" value="{{ Auth::user()->lname }}">
+                        <label for="lname">Lname</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name" name="lname" value="{{ Auth::check() ? Auth::user()->lname : '' }}">
+
+
 
                     </div>
 
@@ -115,14 +123,17 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone" value="{{Auth::user()->phone}}">
+                        <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone" value="{{ Auth::check() ? Auth::user()->phone : '' }}">
+
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"
                 >
                 <div class="form-group">
                     <label for="eMail">Email</label>
-                    <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" name="email" value="{{Auth::user()->email}}">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email address" name="email" value="{{ Auth::check() ? Auth::user()->email : '' }}">
+
+
                 </div>
                     {{-- <div class="form-group">
                         <label style="margin: 0 5px 0 5px ;">gender</label>

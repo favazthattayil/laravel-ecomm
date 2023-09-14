@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Axelmart</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -63,6 +63,8 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                         class="img-fluid" alt="Sample image">
                 </div>
+
+
 
                 @if(session('message'))
                 <div class="alert alert-danger" id="sessionMessage">

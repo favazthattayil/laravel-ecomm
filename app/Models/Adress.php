@@ -12,6 +12,16 @@ class Adress extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'user_id',
+        'fullname',
+        'email',
+        'phone',
+        'street',
+        'city',
+        'state',
+        'pincode',
+    ];
 
 
 

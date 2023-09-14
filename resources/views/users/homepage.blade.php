@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Eflyer</title>
+    <title>Axelmart</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -69,8 +69,21 @@
 
         /* Custom width for the dropdown menu */
         .custom-dropdown-menu {
-            width: 100px;
+            color: #f1f1f1;
+            margin-left: 5px;
+            transition: color 0.3s ease-in-out;
             /* Adjust the width as needed */
+        }
+
+        .custom-dropdown-menu .dropdown-item:hover {
+
+            color: black;
+            /* Font color on hover */
+            background-color: #fd7e14;
+            /* Background color on hover */
+            transition: color 0.3s ease-in-out;
+
+
         }
 
 
@@ -153,17 +166,35 @@
             </div>
         </div>
         <div class="dropdown" style="margin: 10px;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #2b2a29;">
-                <i class="fas fa-user-circle"></i> User
-            </button>
-            <div class="custom-dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="width: 20px;">
-                <!-- Adjust the width as needed -->
-                <a class="dropdown-item" href="{{ route('use_home.personalinfo') }}">Profile</a>
-                <a class="dropdown-item" href="{{ route('use_home.cart') }}">Cart</a>
-                <a class="dropdown-item" href="{{ route('orders') }}">Orders</a>
-                <a class="dropdown-item" href="#">Logout</a>
+            @auth
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #2b2a29;">
+                    <i class="fas fa-user-circle"></i> User
+                </button>
+            @endauth
+            <div class="custom-dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"
+                style="width: 40px; background-color: rgb(58, 55, 53); text-align: left; border-radius:8px;">
+                <!-- Adjust the width, background color, and icon color as needed -->
+                <a class="dropdown-item" href="{{ route('use_home.personalinfo') }}"
+                    style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i class="fas fa-user"
+                        style="margin: 0 10px;"></i> Profile</a>
+                <a class="dropdown-item" href="{{ route('use_home.cart') }}"
+                    style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i class="fas fa-shopping-cart"
+                        style="margin: 0 10px;"></i> Cart</a>
+                <a class="dropdown-item" href="{{ route('orders') }}"
+                    style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i class="fas fa-list"
+                        style="margin: 0 10px;"></i> Orders</a>
+                <a class="dropdown-item" href="#" style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i
+                        class="fas fa-sign-out-alt" style="margin: 0 10px;"></i> Logout</a>
             </div>
+
+
+
+
+
+
+
+
         </div>
 
 

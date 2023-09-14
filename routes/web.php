@@ -36,9 +36,20 @@ Route::get('/welcome', [authmanager::class, 'welcome'])->name('welcome');
 
 Route::get('/orders', [authmanager::class, 'orders'])->name('orders');
 Route::get('/address', [authmanager::class, 'address'])->name('address');
+// Route::post('/address', [AddressController::class, 'updateAddress'])->name('update.address');
+Route::post('/address/update', [AddressController::class, 'updateAddress'])->name('update.address');
+
+
+
+
+
 
 // Route::post('address/store', 'AddressController@store')->name('address.store');
+// Route::post('/addresse', [AddressController::class, 'store'])->middleware('auth')->name('address.store');
 Route::post('/address/store', [AddressController::class, 'store'])->middleware('auth')->name('address.store');
+
+Route::get('/addresses', [AddressController::class, 'showAddresses'])->name('addresses');
+
 Route::get('user_home/cart', [authmanager::class, 'cart'])->name('use_home.cart');
 Route::get('user_home/personalinfo', [authmanager::class, 'personalinfo'])->name('use_home.personalinfo');
 Route::post('user_home/personalinfo', [authmanager::class, 'update'])->name('update');

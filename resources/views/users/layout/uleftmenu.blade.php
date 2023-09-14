@@ -7,7 +7,7 @@
         <a href="{{route('use_home.personalinfo')}}" class="nav-link">
           <i class="nav-icon fas fa-user" ></i>
           <p>
-            personal info
+            Personal info
           </p>
         </a>
       </li>
@@ -19,22 +19,32 @@
         <a href="{{route('use_home.cart')}}" class="nav-link">
           <i class="nav-icon fas fa-shopping-cart"></i>
           <p>
-            cart
-
+            Cart
           </p>
         </a>
       </li>
 
 
       <li class="nav-item">
-        <a href="{{route('address')}}" class="nav-link">
-          <i class="nav-icon fas fa-shopping-cart"></i>
-          <p>
-            address
-
-          </p>
+        <a href="{{ route('orders') }}" class="nav-link">
+            <i class="nav-icon fas fa-shopping-bag"></i> <!-- Change the icon class here -->
+            <p>
+                Orders
+            </p>
         </a>
-      </li>
+    </li>
+
+
+
+      <li class="nav-item">
+        <a href="{{ route('addresses') }}" class="nav-link">
+            <i class="nav-icon fas fa-map-marked-alt"></i> <!-- Change the icon class here -->
+            <p>
+                Address
+            </p>
+        </a>
+    </li>
+
 
       <li class="nav-item">
         <a href="#" class="nav-link">
