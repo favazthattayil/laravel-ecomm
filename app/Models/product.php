@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class product extends Model
 {
     use HasFactory;
-protected $table = 'product';
+protected $table = 'products';
     protected $guarded = [];
 
 

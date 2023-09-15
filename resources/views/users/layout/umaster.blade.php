@@ -16,6 +16,7 @@
   <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
 <!-- jQuery UI -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -171,7 +172,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #2b2a29;">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #2b2a29; position:web-stiky; ">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -200,7 +201,11 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-@yield('content')
+
+        @yield('content')
+
+
+
     <!-- /.content -->
 
 

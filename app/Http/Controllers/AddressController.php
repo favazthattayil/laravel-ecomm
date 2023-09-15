@@ -57,7 +57,7 @@ class AddressController extends Controller
     // $address->save();
 
     // Return a response
-    return response()->json(['message' => 'Address saved successfully'], 200);
+    return redirect()->route('addresses')->with('message','Address saved successfully');
 }
 
 
@@ -71,7 +71,7 @@ class AddressController extends Controller
             // $user = Auth::user();
             // Retrieve addresses for the authenticated user
 
-            $addresses = Adress::all();
+            $addresses = Adress::where('user_id',Auth::user()->id)->get();
 
 
             // Pass the data to the Blade view
@@ -97,30 +97,39 @@ class AddressController extends Controller
             //     'city' => 'required|email|max:255',
             //     'state' => 'required|email|max:255',
             //     'pincode' => 'required|email|max:255',
-
             // ]);
-
             // Get the authenticated user
-            $user = Auth::user();
-            $users=Adress::findOrFail(Auth::user()->id);
 
+            $user = Auth::user();
+            $addressID =$request->input('addressID');
+            $users=Adress::where('id',$addressID)->first();
+
+// return $users;
             // Update the user's information
             $addressupdated=([
-                'user_id'=>$users->id,
+                'user_id'=>$users->user_id,
                 'fullname' => $request->input('fullname'),
-                'email' => $request->input('email'),
-                'phone' => $request->input('phone'),
                 'street' => $request->input('street'),
                 'city' => $request->input('city'),
                 'state' => $request->input('state'),
                 'pincode' => $request->input('pincode'),
+                'phone' => $request->input('phone'),
             ]);
-            return $addressupdated;
-            DB::table('adress')->update($addressupdated);
+
+
+            DB::table('adress')->where('id',$addressID)->update($addressupdated);
 
             // Redirect back with a success message
-            // return redirect(route('use_home.personalinfo'))->with('success', 'Address updated successfully');
-            return "update";
+            return redirect(route('addresses'))->with('message', 'Address updated successfully');
+
+        }
+
+        public function deleteAddress($addressID){
+
+            $address =adress::find(decrypt($addressID));
+            $address->delete();
+            return redirect()->route('addresses')->with('message','address deleted succesfully');
+
         }
 
     }

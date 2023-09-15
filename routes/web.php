@@ -38,6 +38,8 @@ Route::get('/orders', [authmanager::class, 'orders'])->name('orders');
 Route::get('/address', [authmanager::class, 'address'])->name('address');
 // Route::post('/address', [AddressController::class, 'updateAddress'])->name('update.address');
 Route::post('/address/update', [AddressController::class, 'updateAddress'])->name('update.address');
+// Route::get('/address/delete {addressID}', [AddressController::class, 'deleteAddress'])->name('delete.address');
+Route::get('/address/delete/{encryptedAddressID}', [AddressController::class, 'deleteAddress'])->name('delete.address');
 
 
 

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\product;
+use App\Models\Category;
+
 
 use DB;
 
@@ -70,8 +73,10 @@ class authmanager extends Controller
     public function welcome()
 
     {
+        $data=product::all();
+        $categories = Category::all() ;
 
-        return view('welcome');
+        return view('welcome',compact('data','categories'));
 
     }
 
