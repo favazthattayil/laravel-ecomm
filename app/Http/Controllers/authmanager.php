@@ -70,21 +70,22 @@ class authmanager extends Controller
 
 
 
-    public function welcome()
+    public function productlist()
+{
+    $categories = Category::all();
+    $data = Product::all(); 
+   
 
-    {
-        $data=product::all();
-        $categories = Category::all() ;
+     return view('welcome', compact('data', 'categories'));
+}
 
-        return view('welcome',compact('data','categories'));
-
-    }
 
 
     public function address()
 
     {
-
+      $data=product::all();
+       
         return view('users.profile.address');
 
     }
