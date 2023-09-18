@@ -31,7 +31,7 @@ Route::get('/signup', [authmanager::class, 'signup'])->name('signup');
 Route::post('/signup', [authmanager::class, 'signupPost'])->name('signup.Post');
 Route::get('/user_home', [authmanager::class, 'user_home'])->name('user_home');
 // Route::post('/profile', [authmanager::class, 'profile'])->name('signup.Post');
-Route::get('/welcome', [authmanager::class, 'welcome'])->name('welcome');
+Route::get('/welcome', [authmanager::class, 'productlist'])->name('welcome');
 
 
 Route::get('/orders', [authmanager::class, 'orders'])->name('orders');

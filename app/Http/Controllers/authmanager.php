@@ -70,6 +70,7 @@ class authmanager extends Controller
 
 
 
+<<<<<<< HEAD
     public function welcome()
 
     {
@@ -77,14 +78,24 @@ class authmanager extends Controller
         $categories = Category::all() ;
         return $data;
         return view('welcome',compact('data','categories'));
+=======
+    public function productlist()
+{
+    $categories = Category::all();
+    $data = Product::all(); 
+   
 
-    }
+     return view('welcome', compact('data', 'categories'));
+}
+>>>>>>> d87e228e6cf7bb9c78082364c2ab554e8b855a85
+
 
 
     public function address()
 
     {
-
+      $data=product::all();
+       
         return view('users.profile.address');
 
     }
