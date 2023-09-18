@@ -121,12 +121,7 @@
 </script>
 
 
-<script>
-    // Use JavaScript to hide the message after 2 seconds
-    setTimeout(function() {
-        document.getElementById('sessionMessage').style.display = 'none';
-    }, 2000); // 2000 milliseconds = 2 seconds
-</script>
+
 
 
 

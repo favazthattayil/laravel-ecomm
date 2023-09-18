@@ -54,6 +54,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
+<style>
+    /* Initially hide the label */
+.add-to-cart-label {
+    display: none;
+}
+
+/* Show the label when hovering over the button or input */
+li:hover .add-to-cart-label {
+    display: inline-block;
+}
+
+</style>
 
 <body>
     <!-- banner bg main start -->
@@ -114,12 +126,12 @@
             </div>
         </div>
         <div class="dropdown" style="margin: 10px;">
-         
+
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #2b2a29;">
                     <i class="fas fa-user-circle"></i> User
                 </button>
-           
+
             <div class="custom-dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"
                 style="width: 40px; background-color: rgb(58, 55, 53); text-align: left; border-radius:8px;">
                 <!-- Adjust the width, background color, and icon color as needed -->
@@ -402,7 +414,7 @@
 
     <!-- electronic section end -->
     <!-- jewellery  section start -->
-  
+
     <!-- jewellery  section end -->
 
 

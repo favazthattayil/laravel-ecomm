@@ -32,7 +32,12 @@
                 <div class="card-header">
                     <a href="{{ route('admin.products.create')}}" class="btn btn-primary">Add Product</a>
 
-                    @if(session()->has('message'))<p class="flashMessage float-right" style="color: #e41818">{{session()->get('message')}}</p>@endif
+                    @if (session()->has('message'))
+                    <div class="flashMessage float-right" style="color: #e41818">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
 
                 </div>
 

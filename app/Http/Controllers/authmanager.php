@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Cart;
 use App\Models\product;
 use App\Models\Category;
-
-
 use DB;
 
 class authmanager extends Controller
@@ -23,7 +23,6 @@ class authmanager extends Controller
     {
 
         return view('users.signin');
-
     }
 
 
@@ -36,7 +35,6 @@ class authmanager extends Controller
         Auth::logout();
 
         return redirect(route('signin'));
-
     }
 
 
@@ -48,7 +46,6 @@ class authmanager extends Controller
     {
 
         return view('users.signup');
-
     }
 
     public function user_home()
@@ -56,7 +53,6 @@ class authmanager extends Controller
     {
 
         return view('users.user_home');
-
     }
 
 
@@ -64,40 +60,63 @@ class authmanager extends Controller
 
     {
 
-        return view('users.profile.cart');
+        // $cartItem = Cart::all();
+        $cartItem= Cart::select('cart.*', 'products.*')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->get();
+        // return $cartItems;
 
+
+        return view('users.profile.cart', compact('cartItem'));
     }
 
 
 
-<<<<<<< HEAD
-    public function welcome()
-
+    public function addcart(Request $request)
     {
-        $data=product::all();
-        $categories = Category::all() ;
-        return $data;
-        return view('welcome',compact('data','categories'));
-=======
+        $user_id = auth()->user()->id; // Assuming you have authentication and are retrieving the user ID.
+        $product_id = $request->input('product_id'); // Assuming you're passing the product ID in the request.
+        $quantity = $request->input('quantity'); // Assuming you're passing the quantity in the request.
+
+        // Create a new cart record
+        $cartItem = new Cart();
+        $cartItem->user_id = $user_id;
+        $cartItem->product_id = $product_id;
+        $cartItem->quantity = $quantity;
+        $cartItem->save();
+        // $user = DB::table('users')->insert($data);
+        return redirect()->back()->with('message', 'Item added to cart successfully.');
+    }
+
+
+    public function selectaddress(Request $request)
+    {
+        $user = Auth::user();
+        $userAddresses = Adress::where('user_id', $user->id)->get();
+        // $user = Auth::user();
+        //     $addressID =$request->input('addressID');
+        //     $addresses=Adress::where('id',$addressID)->first();
+
+        // return $items;
+        return view('users.profile.selectaddress', compact('userAddresses'));
+    }
+
+
+
     public function productlist()
-{
-    $categories = Category::all();
-    $data = Product::all(); 
-   
-
-     return view('welcome', compact('data', 'categories'));
-}
->>>>>>> d87e228e6cf7bb9c78082364c2ab554e8b855a85
-
-
+    {
+        $categories = Category::all();
+        $items = Product::all();
+        // return $items;
+        return view('welcome', compact('items', 'categories'));
+    }
 
     public function address()
 
     {
-      $data=product::all();
-       
-        return view('users.profile.address');
+        // $data = product::all();
 
+        return view('users.profile.address');
     }
 
 
@@ -107,7 +126,6 @@ class authmanager extends Controller
     {
 
         return view('users.profile.personalinfo');
-
     }
 
 
@@ -116,7 +134,6 @@ class authmanager extends Controller
     {
 
         return view('users.profile.orders');
-
     }
 
     // app/Http/Controllers/UserController.php
@@ -136,7 +153,7 @@ class authmanager extends Controller
 
         // Get the authenticated user
         $user = Auth::user();
-        $user=User::findOrFail(Auth::user()->id);
+        $user = User::findOrFail(Auth::user()->id);
 
         // Update the user's information
         $user->update([
@@ -148,7 +165,6 @@ class authmanager extends Controller
 
         // Redirect back with a success message
         return redirect(route('use_home.personalinfo'))->with('success', 'Profile updated successfully');
-
     }
 
 
@@ -160,22 +176,21 @@ class authmanager extends Controller
 
     public function signinPost(Request $request)
     {
-    // Validate the incoming data (email and password)
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
+        // Validate the incoming data (email and password)
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-    // Attempt to authenticate the user using the provided credentials
-    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-        // Authentication succeeded, redirect to the 'welcome' route
-        return redirect(route('welcome'));
+        // Attempt to authenticate the user using the provided credentials
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // Authentication succeeded, redirect to the 'welcome' route
+            return redirect(route('welcome'));
+        }
+
+        // If authentication fails, redirect back to the 'signin' route with an error message
+        return redirect(route('signin'))->with("error", "Invalid email or password");
     }
-
-    // If authentication fails, redirect back to the 'signin' route with an error message
-    return redirect(route('signin'))->with("error", "Invalid email or password");
-
-   }
 
 
 
@@ -214,18 +229,16 @@ class authmanager extends Controller
 
         ];
 
-         //return $data;
+        //return $data;
 
         $user = DB::table('users')->insert($data);
 
         if (!$user) {
 
             return redirect(route('signup'))->with("error", "Sign-up failed, please try again.");
-
         }
 
         return redirect(route('signin'))->with("success", "Sign up successful, please sign in.");
-
     }
 
 
@@ -249,5 +262,3 @@ class authmanager extends Controller
 
 
 }
-
-

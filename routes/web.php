@@ -35,6 +35,7 @@ Route::get('/welcome', [authmanager::class, 'productlist'])->name('welcome');
 
 
 Route::get('/orders', [authmanager::class, 'orders'])->name('orders');
+Route::get('/orders/selectaddress', [authmanager::class, 'selectaddress'])->name('selectaddress');
 Route::get('/address', [authmanager::class, 'address'])->name('address');
 // Route::post('/address', [AddressController::class, 'updateAddress'])->name('update.address');
 Route::post('/address/update', [AddressController::class, 'updateAddress'])->name('update.address');
@@ -53,5 +54,10 @@ Route::post('/address/store', [AddressController::class, 'store'])->middleware('
 Route::get('/addresses', [AddressController::class, 'showAddresses'])->name('addresses');
 
 Route::get('user_home/cart', [authmanager::class, 'cart'])->name('use_home.cart');
+Route::post('user_home/addcart',[authmanager::class,'addcart'])->name('use_home.addcart');
+// Route::get('/user_home/cart/{encryptedproductID}', [authmanager::class, 'deletecart'])->name('delete.cart');
+
+
+
 Route::get('user_home/personalinfo', [authmanager::class, 'personalinfo'])->name('use_home.personalinfo');
 Route::post('user_home/personalinfo', [authmanager::class, 'update'])->name('update');

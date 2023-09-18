@@ -9,14 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 class product extends Model
 {
     use HasFactory;
-protected $table = 'products';
+    protected $table = 'products';
     protected $guarded = [];
 
+    protected $fillable = [
+        'name',
+        'price',
+        'image',
 
-    public function category(){
-        return $this->hasOne(Category::class,'id','category_id');
+    ];
+
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
-
-
-
 }

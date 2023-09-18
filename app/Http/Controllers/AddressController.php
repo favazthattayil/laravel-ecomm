@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Adress; // Import the Adress model
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -127,10 +128,13 @@ class AddressController extends Controller
         public function deleteAddress($addressID){
 
             $address =adress::find(decrypt($addressID));
+
             $address->delete();
             return redirect()->route('addresses')->with('message','address deleted succesfully');
 
         }
+
+
 
     }
 

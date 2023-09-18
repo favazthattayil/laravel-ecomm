@@ -46,6 +46,16 @@
     </li>
 
 
+    <li class="nav-item">
+        <a href="{{ route('selectaddress') }}" class="nav-link">
+            <i class="nav-icon fas fa-map-marked-alt"></i> <!-- Change the icon class here -->
+            <p>
+                 select Address
+            </p>
+        </a>
+    </li>
+
+
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-sign-out-alt"></i>

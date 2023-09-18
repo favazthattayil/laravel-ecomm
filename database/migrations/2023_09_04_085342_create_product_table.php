@@ -16,11 +16,11 @@ class CreateProductTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->double('price',15,2);
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('image')->nullable();
             $table->boolean('status')->comment('1:Active,0:Inactive')->default(1);
