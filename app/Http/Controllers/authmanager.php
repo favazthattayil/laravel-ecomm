@@ -75,7 +75,7 @@ class authmanager extends Controller
     {
         $data=product::all();
         $categories = Category::all() ;
-
+        return $data;
         return view('welcome',compact('data','categories'));
 
     }

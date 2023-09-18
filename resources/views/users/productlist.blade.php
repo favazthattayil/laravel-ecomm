@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($data as $product)
+            @foreach ($data  as $product)
             <!-- Single Product -->
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div id="product-1" class="single-product">
