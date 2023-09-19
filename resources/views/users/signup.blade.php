@@ -39,13 +39,13 @@
         }
     </style> -->
 
-   
+
 
 <style>
   .gradient-custom {
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    
-   
+
+
 
   }
 
@@ -77,7 +77,7 @@
  <div class="row mt-3 mx-3 d-flex justify-content-center align-item-center" style="margin-top: 25px;   ">
   <div class="col-md-3">
     <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
-    
+
     <i class="fa-regular fa-truck-fast" style="color: #ffffff;"></i>
       <h3 class="mt-3 text-white">Welcome</h3>
       <p class="white-text" style="font-weight: bold;">
@@ -98,17 +98,17 @@
           @csrf <!-- Add the CSRF token for Laravel forms -->
           <div class="row mb-4">
             <div class="col">
-              <div class="form-outline"> 
+              <div class="form-outline">
                 <label class="form-label" for="first_name">First name</label>
                 <input type="text" id="first_name" name="fname" class="form-control input-custom" required />
-               
+
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                  <label class="form-label" for="last_name">Last name</label>
                 <input type="text" id="last_name" name="lname" class="form-control input-custom" required />
-               
+
               </div>
             </div>
           </div>
@@ -117,14 +117,14 @@
               <div class="form-outline">
                 <label class="form-label" for="email">Email</label>
                 <input type="text" id="email" name="email" class="form-control input-custom" required />
-                
+
               </div>
             </div>
             <div class="col">
   <div class="form-outline">
     <label class="form-label" for="phone">Phone</label>
   <input type="tel" id="phoneNumber" name="phone" class="form-control input-custom" />
-    
+
   </div>
 </div>
 
@@ -134,14 +134,14 @@
               <div class="form-outline">
                 <label class="form-label" for="password">Password</label>
                 <input type="password" id="password" name="password" class="form-control input-custom" required />
-                
+
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="confirm_password">Confirm Password</label>
                 <input type="password" id="confirm_password" name="confirm_password" class="form-control input-custom" required />
-                
+
               </div>
             </div>
           </div>
@@ -153,7 +153,7 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 </body>
 
 <!-- <body>

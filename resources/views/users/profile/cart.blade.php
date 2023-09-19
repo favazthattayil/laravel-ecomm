@@ -14,46 +14,46 @@
                             @php
                                 $totalPrice = 0;
                             @endphp
-  @if(count($cartItem) === 0)
-  <div>
-      <h2 class="d-flex justify-content-center " style="margin:20px;">"You added nothing to your cart." &#128577;</h2>
-  </div>
-@else
-                            <!-- Single item -->
-                            @foreach ($cartItem as $cart)
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                        <!-- Image -->
-                                        <div class="bg-image hover-overlay hover-zoom ripple rounded"
-                                            data-mdb-ripple-color="light">
-                                            <img style="width: 100px; height:100px;"
-                                                src="{{ asset('storage/images/' . $cart->products->image) }}" class="w-100"
-                                                alt="Product Name" />
+                            @if (count($cartItem) === 0)
+                                <div>
+                                    <h2 class="d-flex justify-content-center " style="margin:20px;">"Your cart is empty." </h2>
+                                </div>
+                            @else
+                                <!-- Single item -->
+                                @foreach ($cartItem as $cart)
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                            <!-- Image -->
+                                            <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                                data-mdb-ripple-color="light">
+                                                <img style="width: 100px; height:100px;"
+                                                    src="{{ asset('storage/images/' . $cart->products->image) }}"
+                                                    class="w-100" alt="Product Name" />
 
-                                            <a href="#!">
-                                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)">
-                                                </div>
-                                            </a>
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- Image -->
                                         </div>
-                                        <!-- Image -->
-                                    </div>
 
-                                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                        <!-- Data -->
-                                        <p><strong>{{ $cart->products->name }}</strong></p>
-                                        <p>{{ $cart->quantity }}</p>
-                                        <p>{{ $cart->products->price }}</p>
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Data -->
+                                            <p><strong>{{ $cart->products->name }}</strong></p>
+                                            <p>{{ $cart->quantity }}</p>
+                                            <p>{{ $cart->products->price }}</p>
 
 
 
-                                        <!-- Data -->
-                                    </div>
+                                            <!-- Data -->
+                                        </div>
 
-                                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                        <!-- Quantity -->
-                                        <div class="d-flex mb-3" style="max-width: 300px">
-                                            <div class="form-outline" style="margin: 0; height: 100%">
-                                                {{-- <input id="quantity-{{ $cart->id }}" min="1" name="quantity"
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Quantity -->
+                                            <div class="d-flex mb-3" style="max-width: 300px">
+                                                <div class="form-outline" style="margin: 0; height: 100%">
+                                                    {{-- <input id="quantity-{{ $cart->id }}" min="1" name="quantity"
                                             value="{{ $cart->quantity }}"
                                             type="number" class="form-control"
                                             style="height: 100%; width: 70px;"
@@ -61,38 +61,38 @@
 
 
 
+                                                </div>
                                             </div>
+                                            @php
+                                                $totalamountofeach = $cart->products->price * $cart->quantity;
+                                            @endphp <!-- Quantity -->
+
+                                            <a href="{{ route('delete.cart', encrypt($cart->id)) }}"
+                                                class="btn btn-primary btn-sm me-1 mb-2 float-right">
+
+
+                                                <i class="fas fa-trash fa-animate-shake"
+                                                    style="color: white; padding-right: 8px;"></i>
+                                            </a>
+
+
+
+                                            <!-- Price -->
+                                            <p class="text-start text-md-center">
+                                                <strong id="total-amount-{{ $cart->id }}">Total :
+                                                    {{ $totalamountofeach }}</strong>
+                                                <!-- Calculate the total price for this item by multiplying the quantity and price -->
+                                            </p>
+
                                         </div>
-                                        @php
-                                            $totalamountofeach = $cart->products->price * $cart->quantity;
-                                        @endphp <!-- Quantity -->
-
-                                        <a href="{{ route('delete.cart', encrypt($cart->id)) }}"
-                                            class="btn btn-primary btn-sm me-1 mb-2 float-right">
-
-
-                                            <i class="fas fa-trash fa-animate-shake"
-                                                style="color: white; padding-right: 8px;"></i>
-                                        </a>
-
-
-
-                                        <!-- Price -->
-                                        <p class="text-start text-md-center">
-                                            <strong id="total-amount-{{ $cart->id }}">Total :
-                                                {{ $totalamountofeach }}</strong>
-                                            <!-- Calculate the total price for this item by multiplying the quantity and price -->
-                                        </p>
-
                                     </div>
-                                </div>
 
-                                <!-- Update the total price with the price of the current product -->
-                                @php
-                                    $totalPrice += $cart->products->price * $cart->quantity;
-                                @endphp
-                            @endforeach
-                            <!-- Single item -->
+                                    <!-- Update the total price with the price of the current product -->
+                                    @php
+                                        $totalPrice += $cart->products->price * $cart->quantity;
+                                    @endphp
+                                @endforeach
+                                <!-- Single item -->
                             @endif
                             <hr class="my-4" />
 

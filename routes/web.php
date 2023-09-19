@@ -23,7 +23,7 @@ use App\Http\Controllers\AddressController;
 
 // OR use this line if you want to use the controller method with the correct class name
 
-Route::get('/', [authmanager::class, 'homepage'])->name('welcome');
+Route::get('/', [authmanager::class, 'homepage'])->name('welcomehome');
 Route::get('/signin', [authmanager::class, 'signin'])->name('signin');
 // Route::get('/'[authmanager::class,'homepage'])->name('homepage');
 Route::post('/signin', [authmanager::class, 'signinPost'])->name('signin.Post');
@@ -36,6 +36,7 @@ Route::get('/welcome', [authmanager::class, 'productlist'])->name('welcome');
 
 Route::get('/orders', [authmanager::class, 'orders'])->name('orders');
 Route::get('/orders/selectaddress', [authmanager::class, 'selectaddress'])->name('selectaddress');
+Route::post('/orders/checkout', [authmanager::class, 'checkout'])->name('checkout');
 Route::get('/address', [authmanager::class, 'address'])->name('address');
 // Route::post('/address', [AddressController::class, 'updateAddress'])->name('update.address');
 Route::post('/address/update', [AddressController::class, 'updateAddress'])->name('update.address');

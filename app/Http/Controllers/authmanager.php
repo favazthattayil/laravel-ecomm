@@ -111,6 +111,55 @@ class authmanager extends Controller
         return view('users.profile.selectaddress', compact('userAddresses'));
     }
 
+    // public function checkout(Request $request)
+    // {
+    //     // Validate the form data
+
+
+    //     // Get the authenticated user
+    //     $user = Auth::user();
+
+
+    //     // Update the user's information
+    //     $order = ([
+    //         'user_id'=>$request->user_id,
+    //         'pincode'=>$request->address_id,
+    //     ]);
+
+    //     $order = DB::table('order')->insert($order);
+
+    //     return redirect()->route('users.profile.address')->with('message','Address saved successfully');
+    // }
+
+
+public function checkout(Request $request)
+{
+    // Validate the form data if needed
+    // You can use $request->validate() here
+
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Retrieve the user_id and address_id from the form data
+    $user_id = $request->input('user_id');
+    $address_id = $request->input('address_id');
+
+    // Insert the order details into the "order" table
+    $order = DB::table('order')->insert([
+        'user_id' => $user_id,
+        'address_id' => $address_id,
+        // You can add more columns and data as needed
+    ]);
+
+    // Optionally, you can check if the insertion was successful
+    if ($order) {
+        // Insertion successful
+        return redirect()->route('use_home.personalinfo')->with('message', 'order  saved successfully');
+    } else {
+        // Insertion failed
+        return redirect()->route('checkout')->with('error', 'Failed to save order');
+    }
+}
 
 
     public function productlist()
@@ -212,11 +261,11 @@ class authmanager extends Controller
         // Attempt to authenticate the user using the provided credentials
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Authentication succeeded, redirect to the 'welcome' route
-            return redirect(route('welcome'));
+            return redirect(route('welcomehome'));
         }
 
         // If authentication fails, redirect back to the 'signin' route with an error message
-        return redirect(route('signin'))->with("error", "Invalid email or password");
+        return redirect(route('signin'))->with("message", "Invalid email or password");
     }
 
 
@@ -267,23 +316,6 @@ class authmanager extends Controller
 
         return redirect(route('signin'))->with("success", "Sign up successful, please sign in.");
     }
-
-
-
-
-
-    // public function userdash()
-
-    // {
-
-    //     return view('userdash');
-
-    // }
-
-
-
-
-
 
 
 

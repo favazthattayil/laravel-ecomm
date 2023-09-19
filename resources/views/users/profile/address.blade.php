@@ -238,14 +238,19 @@
             <div class="col-md-12">
                 <div class="card card-white mb-5">
                     <div class="card-heading clearfix border-bottom mb-4">
-                        <h4 class="card-title"> Shipping Addresses</h4>
+                        <h4 class="card-title"> Shipping Addresses : </h4>
                     </div>
 
 
                     <div class="card-body">
                         <ul class="list-unstyled">
 
-
+                            @if (count($addresses) === 0)
+                            <div>
+                                <h2 class="d-flex justify-content-center " style="margin:20px;">"Add your shipping address , and keep shopping."
+                                     </h2>
+                            </div>
+                        @else
                             @foreach ($addresses as $adress)
                                 {{-- @if (session('message'))
                                     <div class="alert alert-danger" id="sessionMessage">
@@ -312,7 +317,7 @@
                                                         style="font-weight: bold;">Pincode:</span>
                                                     <span id="pincode"
                                                         class="bg-light-blue">{{ $adress->pincode }}</span>
-                                                    <input id="pincodeInput" name="pincode" 
+                                                    <input id="pincodeInput" name="pincode"
                                                        type="text" class="edit-mode"
                                                         style="display: none; border: 1px solid transparent;"
                                                         value="{{ $adress->pincode }}">
@@ -355,6 +360,7 @@
                                     <hr style="height: 1px; background-color: gray;">
                                 </li>
                             @endforeach
+                            @endif
 
                         </ul>
 
