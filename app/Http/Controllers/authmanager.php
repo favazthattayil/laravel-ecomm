@@ -61,13 +61,23 @@ class authmanager extends Controller
     {
 
         // $cartItem = Cart::all();
-        $cartItem= Cart::select('cart.*', 'products.*')
-        ->join('products', 'cart.product_id', '=', 'products.id')
-        ->get();
+        // $cartItem = Cart::select('cart.*', 'products.*')
+        //     ->join('products', 'cart.product_id', '=', 'products.id')
+        //     ->get();
         // return $cartItems;
+        $cartItem=Cart::where('user_id',Auth::id())->get();
 
 
         return view('users.profile.cart', compact('cartItem'));
+    }
+
+    public function deletecart($cartID)
+    {
+
+        $cartinfo = cart::find(decrypt($cartID));
+
+        $cartinfo->delete();
+        return redirect()->route('use_home.cart')->with('message', 'address deleted succesfully');
     }
 
 
@@ -106,10 +116,24 @@ class authmanager extends Controller
     public function productlist()
     {
         $categories = Category::all();
-        $items = Product::all();
+        $items = product::all();
+
+        // return $items;
+        return view('users.productlist', compact('items', 'categories'));
+    }
+
+
+    public function homepage()
+    {
+        $categories = Category::all();
+        $items = product::all();
+
         // return $items;
         return view('welcome', compact('items', 'categories'));
     }
+
+
+
 
     public function address()
 
@@ -170,7 +194,10 @@ class authmanager extends Controller
 
 
 
+    // public function welcome(){
+    // return view ("welcome");
 
+    // }
 
 
 

@@ -14,16 +14,16 @@ use App\Http\Controllers\AddressController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
 
-});
+// });
 // Uncomment this line if you want to use the controller method
 // Route::get('/signin', 'App\Http\Controllers\AuthManager@signIn')->name('users.signin');
 
 // OR use this line if you want to use the controller method with the correct class name
 
-
+Route::get('/', [authmanager::class, 'homepage'])->name('welcome');
 Route::get('/signin', [authmanager::class, 'signin'])->name('signin');
 // Route::get('/'[authmanager::class,'homepage'])->name('homepage');
 Route::post('/signin', [authmanager::class, 'signinPost'])->name('signin.Post');
@@ -41,7 +41,7 @@ Route::get('/address', [authmanager::class, 'address'])->name('address');
 Route::post('/address/update', [AddressController::class, 'updateAddress'])->name('update.address');
 // Route::get('/address/delete {addressID}', [AddressController::class, 'deleteAddress'])->name('delete.address');
 Route::get('/address/delete/{encryptedAddressID}', [AddressController::class, 'deleteAddress'])->name('delete.address');
-
+Route::get('user_home/cart/delete/{id}', [authmanager::class, 'deletecart'])->name('delete.cart');
 
 
 

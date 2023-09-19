@@ -127,6 +127,7 @@ class AddressController extends Controller
 
         public function deleteAddress($addressID){
 
+
             $address =adress::find(decrypt($addressID));
 
             $address->delete();

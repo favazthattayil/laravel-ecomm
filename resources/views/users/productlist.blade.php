@@ -11,24 +11,22 @@
                             {{ session('message') }}
                         </div>
 
-                    <script>
+                        <script>
+                            // Set a timeout to hide the message after 3 seconds (3000 milliseconds)
 
-                        // Set a timeout to hide the message after 3 seconds (3000 milliseconds)
+                            setTimeout(function() {
 
-                        setTimeout(function() {
+                                var sessionMessage = document.getElementById('session-message');
 
-                            var sessionMessage = document.getElementById('session-message');
+                                if (sessionMessage) {
 
-                            if (sessionMessage) {
+                                    sessionMessage.style.display = 'none';
 
-                                sessionMessage.style.display = 'none';
+                                }
 
-                            }
-
-                        }, 4000); // 3000 milliseconds = 3 seconds
-
-                    </script>
- @endif
+                            }, 4000); // 3000 milliseconds = 3 seconds
+                        </script>
+                    @endif
 
                 </div>
 
@@ -37,7 +35,7 @@
         </div>
         <div class="row">
             <!-- Loop through products -->
-            @foreach ($items as $product)
+            @foreach ($items ?? '' as $product)
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-{{ $product->id }}" class="single-product">
                         <div class="part-1"
@@ -45,6 +43,8 @@
 
                             <ul>
                                 <li>
+
+                                    
                                     <form action="{{ route('use_home.addcart') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">

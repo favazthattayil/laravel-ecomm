@@ -14,7 +14,11 @@
                             @php
                                 $totalPrice = 0;
                             @endphp
-
+  @if(count($cartItem) === 0)
+  <div>
+      <h2 class="d-flex justify-content-center " style="margin:20px;">"You added nothing to your cart." &#128577;</h2>
+  </div>
+@else
                             <!-- Single item -->
                             @foreach ($cartItem as $cart)
                                 <div class="row">
@@ -23,7 +27,7 @@
                                         <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                             data-mdb-ripple-color="light">
                                             <img style="width: 100px; height:100px;"
-                                                src="{{ asset('storage/images/' . $cart->image) }}" class="w-100"
+                                                src="{{ asset('storage/images/' . $cart->products->image) }}" class="w-100"
                                                 alt="Product Name" />
 
                                             <a href="#!">
@@ -36,9 +40,9 @@
 
                                     <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                         <!-- Data -->
-                                        <p><strong>{{ $cart->name }}</strong></p>
+                                        <p><strong>{{ $cart->products->name }}</strong></p>
                                         <p>{{ $cart->quantity }}</p>
-                                        <p>{{ $cart->price }}</p>
+                                        <p>{{ $cart->products->price }}</p>
 
 
 
@@ -62,15 +66,21 @@
                                         @php
                                             $totalamountofeach = $cart->products->price * $cart->quantity;
                                         @endphp <!-- Quantity -->
-                                        <button type="button" class="btn btn-primary btn-sm me-1 mb-2 float-right"
-                                            data-mdb-toggle="tooltip" title="Remove item">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+
+                                        <a href="{{ route('delete.cart', encrypt($cart->id)) }}"
+                                            class="btn btn-primary btn-sm me-1 mb-2 float-right">
+
+
+                                            <i class="fas fa-trash fa-animate-shake"
+                                                style="color: white; padding-right: 8px;"></i>
+                                        </a>
+
 
 
                                         <!-- Price -->
                                         <p class="text-start text-md-center">
-                                            <strong id="total-amount-{{ $cart->id }}">Total : {{ $totalamountofeach }}</strong>
+                                            <strong id="total-amount-{{ $cart->id }}">Total :
+                                                {{ $totalamountofeach }}</strong>
                                             <!-- Calculate the total price for this item by multiplying the quantity and price -->
                                         </p>
 
@@ -83,7 +93,7 @@
                                 @endphp
                             @endforeach
                             <!-- Single item -->
-
+                            @endif
                             <hr class="my-4" />
 
                             <!-- Display the total price -->
@@ -143,9 +153,9 @@
                                 </li>
                             </ul>
 
-                            <button type="button" class="btn btn-primary btn-lg btn-block">
-                                Go to checkout
-                            </button>
+
+                            <a class="btn btn-primary btn-lg btn-block" href="{{ route('selectaddress') }}"> Go to
+                                checkout</a>
                         </div>
                     </div>
                 </div>
@@ -153,7 +163,7 @@
         </div>
     </section>
 
-    <script>
+    {{-- <script>
         function updateTotalAmount(cartId, newQuantity) {
             // Calculate the updated total amount based on the new quantity
             const pricePerItem = parseFloat({{ $cart->products->price }});
@@ -179,5 +189,5 @@
                 totalAmountForAllItemsElement.textContent = `$${totalAmountForAllItems.toFixed(2)}`;
             }
         }
-    </script>
+    </script> --}}
 @endsection
