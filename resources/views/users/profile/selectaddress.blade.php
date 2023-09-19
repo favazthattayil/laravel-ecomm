@@ -138,8 +138,8 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('checkout') }}">
-                            @csrf <!-- CSRF token -->
+                        {{-- <form method="POST" action="{{ route('select.address') }}">
+                            @csrf <!-- CSRF token --> --}}
                             <ul class="list-unstyled">
                                 @foreach ($userAddresses as $address)
                                     <li class="position-relative booking">
@@ -161,8 +161,8 @@
                                                 <!-- ... (other address fields) ... -->
                                             </div>
                                             <div class="radio-button">
+                                                <input type="radio" id="address{{ $address->id }}" name="selected_address" value="{{ $address->id }}" required>
                                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                <input type="radio" id="address{{ $address->id }}" name="address_id" value="{{ $address->id }}" required>
                                                 <label for="address{{ $address->id }}">Select Address</label>
                                             </div>
                                         </div>
@@ -173,7 +173,7 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Select Address</button>
                             </div>
-                        </form>
+                        {{-- </form> --}}
                     </div>
                 </div>
             </div>

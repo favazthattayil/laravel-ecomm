@@ -6,7 +6,7 @@ use App\Models\Adress; // Import the Adress model
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AddressController extends Controller
 {

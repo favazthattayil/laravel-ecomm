@@ -7,16 +7,43 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Cart;
 use App\Models\product;
 use App\Models\Category;
-use DB;
+
 
 class authmanager extends Controller
 
 
 {
+
+
+    public function showOrderDetails() {
+        $orderDetails = DB::table('order')
+            ->join('cart', 'order.user_id', '=', 'cart.user_id')
+            ->join('adress', 'order.address_id', '=', 'adress.id')
+            ->join('products', 'cart.product_id', '=', 'products.id')
+            ->join('users', 'users.id', '=', 'order.user_id')
+
+            ->select(
+                'users.fname',
+                'adress.city',
+                'adress.street',
+                'adress.state',
+                'products.name',
+                'products.price'
+            )
+            ->get();
+
+
+
+            return view('users.profile.orders', ['orderDetails' => $orderDetails]);
+
+
+    }
+
 
     public function signin()
 
@@ -86,14 +113,17 @@ class authmanager extends Controller
     {
         $user_id = auth()->user()->id; // Assuming you have authentication and are retrieving the user ID.
         $product_id = $request->input('product_id'); // Assuming you're passing the product ID in the request.
-        $quantity = $request->input('quantity'); // Assuming you're passing the quantity in the request.
-
+        $quantity = $request->input('quantity');
+        $uuid = $request->input('uuid'); // Assuming you're passing the quantity in the request.
+        Session::put('uuidCart',$uuid);
         // Create a new cart record
         $cartItem = new Cart();
         $cartItem->user_id = $user_id;
         $cartItem->product_id = $product_id;
         $cartItem->quantity = $quantity;
+        $cartItem->uuid=$uuid;
         $cartItem->save();
+
         // $user = DB::table('users')->insert($data);
         return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
@@ -143,11 +173,13 @@ public function checkout(Request $request)
     // Retrieve the user_id and address_id from the form data
     $user_id = $request->input('user_id');
     $address_id = $request->input('address_id');
+    $uuid=Session::get('uuidCart');
 
     // Insert the order details into the "order" table
     $order = DB::table('order')->insert([
         'user_id' => $user_id,
         'address_id' => $address_id,
+        'uuid'=> $uuid,
         // You can add more columns and data as needed
     ]);
 

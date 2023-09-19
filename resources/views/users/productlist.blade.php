@@ -44,13 +44,16 @@
                             <ul>
                                 <li>
 
-                                    
+
                                     <form action="{{ route('use_home.addcart') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <input name="quantity" title="quantity"
                                             style="width: 40px; height: 40px; text-align: center; font-weight: bold; border: none;"
                                             type="number" value="1" min="1">
+                                            <input type="hidden" name="uuid" value="{{ substr(\Illuminate\Support\Str::uuid(), 0, 10) }}">
+
+
                                         <button type="submit" style="width: 40px; height: 40px;" title="add to cart">
                                             <i class="fas fa-shopping-cart"></i>
                                         </button>
