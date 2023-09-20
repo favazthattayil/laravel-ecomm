@@ -74,8 +74,8 @@
                       <td>{{$product->category->name ?? ''}}</td>
                       <td style="text-align: right;">₹  {{ number_format($product->price, 2) }}</td>
 
-                      <td style="text-align: center; color: @if($product->status == 1)green @else red @endif;">
-                        @if($product->status == 1)
+                      <td style="text-align: center; color: @if($product->is_favorite == 1)green @else red @endif;">
+                        @if($product->is_favorite == 1)
                             Yes
                         @else
                             No

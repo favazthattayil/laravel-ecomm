@@ -34,12 +34,13 @@
             </div>
         </div>
         <div class="row">
+
             <!-- Loop through products -->
             @foreach ($items ?? '' as $product)
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-{{ $product->id }}" class="single-product">
                         <div class="part-1"
-                            style="background-image: url('{{ asset('storage/images/' . $product->image) }}'); border-radius: 5px;">
+                            style="background-image: url('{{ asset('storage/images/' . $product->image) }}'); border-radius: 5px; background-size:cover;">
 
                             <ul>
                                 <li>

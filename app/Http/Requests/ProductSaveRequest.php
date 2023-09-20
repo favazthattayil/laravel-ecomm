@@ -28,8 +28,8 @@ class ProductSaveRequest extends FormRequest
             'price' => ['required'],
             'category_id' => ['nullable'],
             'image' => ['nullable'],
-            'status' => ['nullable'],
-            'is_favourite' => ['nullable'],
+            // 'status' => ['nullable'],
+            'is_favorite' => ['nullable'],
         ];
     }
 }

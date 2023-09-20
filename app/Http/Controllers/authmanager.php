@@ -20,7 +20,8 @@ class authmanager extends Controller
 {
 
 
-    public function showOrderDetails() {
+    public function showOrderDetails()
+    {
         $orderDetails = DB::table('order')
             ->join('cart', 'order.user_id', '=', 'cart.user_id')
             ->join('adress', 'order.address_id', '=', 'adress.id')
@@ -39,9 +40,7 @@ class authmanager extends Controller
 
 
 
-            return view('users.profile.orders', ['orderDetails' => $orderDetails]);
-
-
+        return view('users.profile.orders', ['orderDetails' => $orderDetails]);
     }
 
 
@@ -83,20 +82,34 @@ class authmanager extends Controller
     }
 
 
+    // public function cart()
+
+    // {
+
+    //     // $cartItem = Cart::all();
+    //     // $cartItem = Cart::select('cart.*', 'products.*')
+    //     //     ->join('products', 'cart.product_id', '=', 'products.id')
+    //     //     ->get();
+    //     // return $cartItems;
+    //     $cartItem=Cart::where('user_id',Auth::id())->get();
+
+
+    //     return view('users.profile.cart', compact('cartItem'));
+    // }
+
     public function cart()
-
     {
+        if (auth()->check()) {
 
-        // $cartItem = Cart::all();
-        // $cartItem = Cart::select('cart.*', 'products.*')
-        //     ->join('products', 'cart.product_id', '=', 'products.id')
-        //     ->get();
-        // return $cartItems;
-        $cartItem=Cart::where('user_id',Auth::id())->get();
-
-
-        return view('users.profile.cart', compact('cartItem'));
+            $cartItems = Cart::where('user_id', Auth::user()->id)->with('products')->get();
+            // $cartItems=Cart::where('user_id',Auth::id())->get();
+            return view('users.profile.cart', compact('cartItems'));
+        } else {
+            return redirect()->route('signin'); // Redirect to your sign-in route
+        //     return redirect()->route('signin')->with('message', 'You are not signed in. Please sign in to access your cart.');
+        }
     }
+
 
     public function deletecart($cartID)
     {
@@ -115,13 +128,13 @@ class authmanager extends Controller
         $product_id = $request->input('product_id'); // Assuming you're passing the product ID in the request.
         $quantity = $request->input('quantity');
         $uuid = $request->input('uuid'); // Assuming you're passing the quantity in the request.
-        Session::put('uuidCart',$uuid);
+        Session::put('uuidCart', $uuid);
         // Create a new cart record
         $cartItem = new Cart();
         $cartItem->user_id = $user_id;
         $cartItem->product_id = $product_id;
         $cartItem->quantity = $quantity;
-        $cartItem->uuid=$uuid;
+        $cartItem->uuid = $uuid;
         $cartItem->save();
 
         // $user = DB::table('users')->insert($data);
@@ -162,36 +175,36 @@ class authmanager extends Controller
     // }
 
 
-public function checkout(Request $request)
-{
-    // Validate the form data if needed
-    // You can use $request->validate() here
+    public function checkout(Request $request)
+    {
+        // Validate the form data if needed
+        // You can use $request->validate() here
 
-    // Get the authenticated user
-    $user = Auth::user();
+        // Get the authenticated user
+        $user = Auth::user();
 
-    // Retrieve the user_id and address_id from the form data
-    $user_id = $request->input('user_id');
-    $address_id = $request->input('address_id');
-    $uuid=Session::get('uuidCart');
+        // Retrieve the user_id and address_id from the form data
+        $user_id = $request->input('user_id');
+        $address_id = $request->input('address_id');
+        $uuid = Session::get('uuidCart');
 
-    // Insert the order details into the "order" table
-    $order = DB::table('order')->insert([
-        'user_id' => $user_id,
-        'address_id' => $address_id,
-        'uuid'=> $uuid,
-        // You can add more columns and data as needed
-    ]);
+        // Insert the order details into the "order" table
+        $order = DB::table('order')->insert([
+            'user_id' => $user_id,
+            'address_id' => $address_id,
+            'uuid' => $uuid,
+            // You can add more columns and data as needed
+        ]);
 
-    // Optionally, you can check if the insertion was successful
-    if ($order) {
-        // Insertion successful
-        return redirect()->route('use_home.personalinfo')->with('message', 'order  saved successfully');
-    } else {
-        // Insertion failed
-        return redirect()->route('checkout')->with('error', 'Failed to save order');
+        // Optionally, you can check if the insertion was successful
+        if ($order) {
+            // Insertion successful
+            return redirect()->route('use_home.personalinfo')->with('message', 'order  saved successfully');
+        } else {
+            // Insertion failed
+            return redirect()->route('checkout')->with('error', 'Failed to save order');
+        }
     }
-}
 
 
     public function productlist()
@@ -348,8 +361,4 @@ public function checkout(Request $request)
 
         return redirect(route('signin'))->with("success", "Sign up successful, please sign in.");
     }
-
-
-
-
 }

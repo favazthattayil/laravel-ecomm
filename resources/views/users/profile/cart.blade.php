@@ -14,13 +14,18 @@
                             @php
                                 $totalPrice = 0;
                             @endphp
-                            @if (count($cartItem) === 0)
+                            @if (count($cartItems)===0)
+
+
+
+
+
                                 <div>
                                     <h2 class="d-flex justify-content-center " style="margin:20px;">"Your cart is empty." </h2>
                                 </div>
                             @else
                                 <!-- Single item -->
-                                @foreach ($cartItem as $cart)
+                                @foreach ($cartItems as $cart)
                                     <div class="row">
                                         <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                             <!-- Image -->
@@ -42,7 +47,7 @@
                                             <!-- Data -->
                                             <p><strong>{{ $cart->products->name }}</strong></p>
                                             <p>{{ $cart->quantity }}</p>
-                                            <p>{{ $cart->products->price }}</p>
+                                            <p>price : ₹{{ $cart->products->price }}</p>
 
 
 
@@ -136,7 +141,7 @@
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Products
-                                    <span id="total-amount-for-all-items">${{ number_format($totalPrice, 2) }}</span>
+                                    <span id="total-amount-for-all-items">₹  {{ number_format($totalPrice, 2) }}</span>
                                     <!-- Format the total price as a currency -->
                                 </li>
 
@@ -148,7 +153,7 @@
                                             <p class="mb-0">(including VAT)</p>
                                         </strong>
                                     </div>
-                                    <span id="total-amount-for-all-items">${{ number_format($totalPrice, 2) }}</span>
+                                    <span id="total-amount-for-all-items">₹  {{ number_format($totalPrice, 2) }}</span>
                                     <!-- Format the total price as a currency -->
                                 </li>
                             </ul>

@@ -75,8 +75,8 @@
                   </div>
                   <div class="form-group">
                     <label >Available</label>
-                    <input type="radio" {{ $product->status == 1 ? 'checked' : '' }} value="1" name="status"/> Yes
-                    <input type="radio" {{ $product->status == 0 ? 'checked' : '' }} value="0" name="status"/> No
+                    <input type="radio" {{ $product->status == 1 ? 'checked' : '' }} value="1" name="is_favorite"/> Yes
+                    <input type="radio" {{ $product->status == 0 ? 'checked' : '' }} value="0" name="is_favorite"/> No
                   </div>
 
                 </div>

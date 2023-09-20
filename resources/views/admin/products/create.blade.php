@@ -78,8 +78,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Available</label>
-                                    <input type="radio" value="1" name="status" /> Yes
-                                    <input type="radio" value="0" name="status" /> No
+                                    <input type="radio" value="1" name="is_favorite" /> Yes
+                                    <input type="radio" value="0" name="is_favorite" /> No
                                 </div>
 
                             </div>

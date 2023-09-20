@@ -53,6 +53,21 @@
 
 <body>
     <section class="vh-100 gradient-custom">
+        @if (session('message'))
+        <div class="alert alert-success d-flex align-items-center justify-content-center m-10" id="session-message">
+            {{ session('message') }}
+        </div>
+
+        <script>
+            // Set a timeout to hide the message after 4 seconds (4000 milliseconds)
+            setTimeout(function() {
+                var sessionMessage = document.getElementById('session-message');
+                if (sessionMessage) {
+                    sessionMessage.style.display = 'none';
+                }
+            }, 4000);
+        </script>
+        @endif
         <div class="container-fluid h-custom  vh-100">
 
 
@@ -66,11 +81,8 @@
 
 
 
-                @if(session('message'))
-                <div class="alert alert-danger" id="sessionMessage">
-                    {{ session('message') }}
-                </div>
-                @endif
+
+
 
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form method="POST" action={{ route('signin.Post') }}>

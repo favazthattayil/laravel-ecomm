@@ -134,51 +134,49 @@
             <div class="col-md-12">
                 <div class="card card-white mb-5">
                     <div class="card-heading clearfix border-bottom mb-4">
-                        <h4 class="card-title"> Shipping Addresses</h4>
+                        <h4 class="card-title"> Select Address</h4>
                     </div>
 
                     <div class="card-body">
                         {{-- <form method="POST" action="{{ route('select.address') }}">
                             @csrf <!-- CSRF token --> --}}
-                            <ul class="list-unstyled">
-                                @foreach ($userAddresses as $address)
-                                    <li class="position-relative booking">
-                                        <div class="media" style="padding: 30px;">
-                                            <div class="msg-img">
-                                                <!-- Display user avatar or profile image if available -->
-                                            </div>
-                                            <div class="media-body">
-                                                <h5 style="font-weight: bold;">{{ $address->fullname }}</h5>
-                                                <p style="font-weight: 520">{{ $address->city }},
-                                                    {{ $address->state }} ,
-                                                </p>
-                                                <h6 style="font-weight: 520">
-                                                    {{ $address->street }} ,
-                                                    {{ $address->pincode }} ,
-                                                    {{ $address->phone }}
-                                                </h6>
-                                                <!-- Display address information -->
-                                                <!-- ... (other address fields) ... -->
-                                            </div>
-                                            <div class="radio-button">
-                                                <input type="radio" id="address{{ $address->id }}" name="selected_address" value="{{ $address->id }}" required>
-                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                <label for="address{{ $address->id }}">Select Address</label>
-                                            </div>
+                        <ul class="list-unstyled">
+                            @foreach ($userAddresses as $address)
+                                <li class="position-relative booking">
+                                    <div class="media" style="padding: 30px;">
+                                        <div class="msg-img">
+                                            <!-- Display user avatar or profile image if available -->
                                         </div>
-                                        <hr style="height: 1px; background-color: gray;">
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Select Address</button>
-                            </div>
+                                        <div class="media-body">
+                                            <h5 style="font-weight: bold;">{{ $address->fullname }}</h5>
+                                            <p style="font-weight: 520">{{ $address->city }},
+                                                {{ $address->state }} <br> {{ $address->street }}
+                                            </p>
+                                            <h6 >
+                                                pincode :{{ $address->pincode }}
+                                            </h6>
+                                            <h6> contact :{{ $address->phone }}</h6>
+                                            <!-- Display address information -->
+                                            <!-- ... (other address fields) ... -->
+                                        </div>
+                                        <div class="radio-button">
+                                            <input type="radio" id="address{{ $address->id }}" name="selected_address"
+                                                value="{{ $address->id }}" required>
+                                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                            <label for="address{{ $address->id }}">Select Address</label>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 1px; background-color: gray;">
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Select Address</button>
+                        </div>
                         {{-- </form> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 @endsection
