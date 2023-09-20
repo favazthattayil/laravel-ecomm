@@ -14,18 +14,14 @@
                             @php
                                 $totalPrice = 0;
                             @endphp
-                            @if (count($cartItems)===0)
-
-
-
-
-
+                            {{-- @if (count($cartItems)===0)
                                 <div>
                                     <h2 class="d-flex justify-content-center " style="margin:20px;">"Your cart is empty." </h2>
                                 </div>
-                            @else
+                            @else --}}
                                 <!-- Single item -->
                                 @foreach ($cartItems as $cart)
+
                                     <div class="row">
                                         <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                             <!-- Image -->
@@ -98,7 +94,7 @@
                                     @endphp
                                 @endforeach
                                 <!-- Single item -->
-                            @endif
+                            {{-- @endif --}}
                             <hr class="my-4" />
 
                             <!-- Display the total price -->
@@ -158,8 +154,15 @@
                                 </li>
                             </ul>
 
+                            {{-- <form method="POST" action="{{route('confirmorder')}}">
+                                @csrf
+                                <input type="hidden" value="{{ number_format($totalPrice, 2) }}" name="totalprice">
+                                <input type="hidden" name="products" value="{{ $cart->products->id }}">
+                                <button type="submit" style="float: right;" class="btn btn-primary">confirm order</button>
+                            </form> --}}
 
-                            <a class="btn btn-primary btn-lg btn-block" href="{{ route('selectaddress') }}"> Go to
+
+                            <a class="btn btn-primary btn-lg btn-block" href="{{ route('selectaddress') }}"> Go to 
                                 checkout</a>
                         </div>
                     </div>

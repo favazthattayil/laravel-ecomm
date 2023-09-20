@@ -33,7 +33,8 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row" >
+
 
             <!-- Loop through products -->
             @foreach ($items ?? '' as $product)
@@ -61,8 +62,13 @@
                                     </form>
 
                                 </li>
-                                <li title="details" style="float: right"><a href="#"><i
-                                            class="fas fa-expand"></i></a></li>
+                                <li title="details" style="float: right">
+                                    <a href="{{ route('productdetails', ['id'=>$product->id]) }}">
+                                        <i class="fas fa-expand"></i>
+                                    </a>
+                                </li>
+
+
                                 <br>
                             </ul>
 
@@ -70,6 +76,8 @@
                         <div class="part-2">
                             <h3 class="product-title">{{ $product->name }}</h3>
                             <h4 class="product-price">{{ $product->price }}</h4>
+
+
                         </div>
                     </div>
                 </div>

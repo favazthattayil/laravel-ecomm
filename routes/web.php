@@ -37,6 +37,9 @@ Route::get('/welcome', [authmanager::class, 'productlist'])->name('welcome');
 // Route::get('/orders', [authmanager::class, 'orders'])->name('orders');
 Route::get('/orders/selectaddress', [authmanager::class, 'selectaddress'])->name('selectaddress');
 Route::post('/orders/checkout', [authmanager::class, 'checkout'])->name('checkout');
+Route::post('/orders/confirm', [authmanager::class, 'confirmorder'])->name('confirmorder');
+
+
 Route::get('/address', [authmanager::class, 'address'])->name('address');
 // Route::post('/address', [AddressController::class, 'updateAddress'])->name('update.address');
 Route::post('/address/update', [AddressController::class, 'updateAddress'])->name('update.address');
@@ -49,7 +52,7 @@ Route::get('user_home/cart/delete/{id}', [authmanager::class, 'deletecart'])->na
 Route::get('/orders', [authmanager::class, 'showOrderDetails'])->name('orders');
 
 
-
+Route::get('/productdetails{id}', [authmanager::class, 'productdetails'])->name('productdetails');
 
 
 

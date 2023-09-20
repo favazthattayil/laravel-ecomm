@@ -138,8 +138,8 @@
                     </div>
 
                     <div class="card-body">
-                        {{-- <form method="POST" action="{{ route('select.address') }}">
-                            @csrf <!-- CSRF token --> --}}
+                        {{-- <form method="POST" action="{{ route('checkout') }}">
+                            @csrf <!-- CSRF token -->
                         <ul class="list-unstyled">
                             @foreach ($userAddresses as $address)
                                 <li class="position-relative booking">
@@ -160,7 +160,7 @@
                                             <!-- ... (other address fields) ... -->
                                         </div>
                                         <div class="radio-button">
-                                            <input type="radio" id="address{{ $address->id }}" name="selected_address"
+                                            <input type="radio" id="address{{ $address->id }}" name="address_id"
                                                 value="{{ $address->id }}" required>
                                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                             <label for="address{{ $address->id }}">Select Address</label>
@@ -173,7 +173,44 @@
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Select Address</button>
                         </div>
-                        {{-- </form> --}}
+                        </form> --}}
+                        <form method="POST" action="{{ route('checkout') }}">
+                            @csrf <!-- CSRF token -->
+                            <ul class="list-unstyled">
+                                @foreach ($userAddresses as $address)
+                                    <li class="position-relative booking">
+                                        <div class="media" style="padding: 30px;">
+                                            <!-- Display user avatar or profile image if available -->
+                                            <!-- ... (Avatar or profile image HTML here) ... -->
+
+                                            <div class="media-body">
+                                                <h5 style="font-weight: bold;">{{ $address->fullname }}</h5>
+                                                <p style="font-weight: 520">{{ $address->city }}, {{ $address->state }},</p>
+                                                <h6 style="font-weight: 520">
+                                                    {{ $address->street }}, {{ $address->pincode }}, {{ $address->phone }}
+                                                </h6>
+                                                <!-- Display address information -->
+                                                <!-- ... (other address fields) ... -->
+                                            </div>
+
+                                            <div class="radio-button">
+                                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                <input type="radio" id="address{{ $address->id }}" name="address_id" value="{{ $address->id }}" required>
+                                                <label for="address{{ $address->id }}">Select Address</label>
+                                            </div>
+                                        </div>
+                                        <hr style="height: 1px; background-color: gray;">
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <div class="text-center">
+                                <button type="submit" style="float: right;" class="btn btn-primary">Select Address</button>
+                            </div>
+                        </form>
+
+
+
+
                     </div>
                 </div>
             </div>
