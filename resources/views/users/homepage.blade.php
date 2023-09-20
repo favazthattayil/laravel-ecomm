@@ -146,22 +146,10 @@
                 <a class="dropdown-item" href="{{ route('orders') }}"
                     style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i class="fas fa-list"
                         style="margin: 0 10px;"></i> Orders</a>
-                <a class="dropdown-item" href="#" style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i
+                <a class="dropdown-item" href="{{ route('logout.Post') }}" style="color: #f1f1f1; transition: color 0.3s ease-in-out;"><i
                         class="fas fa-sign-out-alt" style="margin: 0 10px;"></i> Logout</a>
             </div>
-
-
-
-
-
-
-
-
         </div>
-
-
-
-
 
 
         <!-- header top section start -->
@@ -263,7 +251,7 @@
     @include('users.productlist')
 
 
-  
+
 
 
 

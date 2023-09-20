@@ -27,6 +27,7 @@ Route::get('/', [authmanager::class, 'homepage'])->name('welcomehome');
 Route::get('/signin', [authmanager::class, 'signin'])->name('signin');
 // Route::get('/'[authmanager::class,'homepage'])->name('homepage');
 Route::post('/signin', [authmanager::class, 'signinPost'])->name('signin.Post');
+Route::get('/logout', [authmanager::class, 'logoutPost'])->name('logout.Post');
 Route::get('/signup', [authmanager::class, 'signup'])->name('signup');
 Route::post('/signup', [authmanager::class, 'signupPost'])->name('signup.Post');
 Route::get('/user_home', [authmanager::class, 'user_home'])->name('user_home');
