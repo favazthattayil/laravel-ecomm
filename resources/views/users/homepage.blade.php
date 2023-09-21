@@ -11,6 +11,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>Axelmart</title>
+    <link rel="icon" type="image/x-icon" href="img/AdminLTELogo.png">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
